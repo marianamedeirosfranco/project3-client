@@ -60,7 +60,7 @@ function AddTask() {
           onChange={handleDescription}
         />
 
-        <label htmlFor="title">Status</label>
+        <label htmlFor="status">Select the status:</label>
         <input
           type="text"
           name="status"
@@ -69,12 +69,21 @@ function AddTask() {
           onChange={handleStatus}
         />
 
-<label htmlFor="title">Importance</label>
+<label htmlFor="importance">Importance</label>
         <input
           type="text"
-          name="status"
-          id="status"
-          value={status}
+          name="importance"
+          id="importance"
+          value={importance}
+          onChange={handleImportance}
+        />
+
+<label htmlFor="user">User</label>
+        <input
+          type="text"
+          name="user"
+          id="importance"
+          value={importance}
           onChange={handleImportance}
         />
 
