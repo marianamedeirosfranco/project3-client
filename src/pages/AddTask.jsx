@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import projectService from "../services/project.service";
+import taskService from "../services/task.service";
 
 function AddTask() {
   const [title, setTitle] = useState("");
@@ -24,7 +23,7 @@ function AddTask() {
     e.preventDefault();
     const body = { title, description, status, importance, user, comments };
     try {
-      await projectService.createProject({
+      await taskService.createProject({
         title,
         description,
         status,
@@ -100,10 +99,10 @@ function AddTask() {
           onChange={handleUser}
         />
 
-        <button type="submit">Create project</button>
+        <button type="submit">Create task</button>
       </form>
     </section>
   );
 }
 
-export default AddProject;
+export default AddTask;

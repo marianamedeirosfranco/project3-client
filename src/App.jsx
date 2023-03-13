@@ -11,13 +11,12 @@ import Login from "../src/pages/Login";
 import Signup from "../src/pages/Signup";
 
 function App() {
-
   return (
     <div className="App">
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Homepage />} />
         <Route
           path="/tasks"
           element={
@@ -27,7 +26,7 @@ function App() {
             </Private>
           }
         />
-        <Route path="/tasks/:id" element={<TaskDetails />} />
+        {/* <Route path="/tasks/:id" element={<TaskDetails />} /> */}
         <Route path="/tasks/new" element={<AddTask />} />
         <Route path="/tasks/edit/:id" element={<EditTask />} />
         <Route path="/signup" element={<Signup />} />
