@@ -7,28 +7,28 @@ function AddTask() {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [importance, setImportance] = useState("");
-  const [user, setUser] = useState("");
+  const [date, setDate] = useState("");
   const [comments, setComments] = useState("");
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleStatus = (e) => setStatus(e.target.value);
   const handleImportance = (e) => setImportance(e.target.value);
-  const handleUser = (e) => setUser(e.target.value);
+  const handleDate = (e) => setDate(e.target.value);
   const handleComments = (e) => setComments(e.target.value);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = { title, description, status, importance, user, comments };
+    const body = { title, description, status, importance, date, comments };
     try {
-      await taskService.createProject({
+      await taskService.createTask({
         title,
         description,
         status,
         importance,
-        user,
+        date,
         comments,
       });
       navigate("/tasks");
@@ -90,13 +90,13 @@ function AddTask() {
           <option value="normal">Normal</option>
         </select>
 
-        <label htmlFor="user">User</label>
+        <label htmlFor="user">Date</label>
         <input
           type="text"
           name="user"
           id="importance"
-          value={user}
-          onChange={handleUser}
+          value={date}
+          onChange={handleDate}
         />
 
         <button type="submit">Create task</button>

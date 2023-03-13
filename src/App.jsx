@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Private from "./components/Private";
 import AddTask from "../src/pages/AddTask";
@@ -9,8 +9,11 @@ import EditTask from "../src/pages/EditTask";
 import Homepage from "../src/pages/Homepage";
 import Login from "../src/pages/Login";
 import Signup from "../src/pages/Signup";
+import { GoogleLogin } from '@react-oauth/google';
+
 
 function App() {
+
   return (
     <div className="App">
       <Navbar />
@@ -21,8 +24,7 @@ function App() {
           path="/tasks"
           element={
             <Private>
-              <AddTask />
-              <EditTask />
+            
             </Private>
           }
         />
