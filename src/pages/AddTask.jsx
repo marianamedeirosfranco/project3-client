@@ -13,10 +13,10 @@ function AddTask() {
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
-  const handleStatus = (e) => setDescription(e.target.value);
+  const handleStatus = (e) => setStatus(e.target.value);
   const handleImportance = (e) => setImportance(e.target.value);
   const handleUser = (e) => setUser(e.target.value);
-  const handleComments = (e) => setUser(e.target.value);
+  const handleComments = (e) => setComments(e.target.value);
 
   const navigate = useNavigate();
 
@@ -61,30 +61,43 @@ function AddTask() {
         />
 
         <label htmlFor="status">Select the status:</label>
-        <input
+        <select
+          name="status"
+          id="status"
+          onChange={handleStatus}
+          value={status}
+        >
+          <option value="pending">Pending</option>
+          <option value="inProgress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+        {/*         <input
           type="text"
           name="status"
           id="status"
           value={status}
-          onChange={handleStatus}
-        />
+          
+        /> */}
 
-<label htmlFor="importance">Importance</label>
-        <input
-          type="text"
+        <label htmlFor="importance">Importance:</label>
+        <select
           name="importance"
           id="importance"
-          value={importance}
           onChange={handleImportance}
-        />
+          value={importance}
+        >
+          <option value="highPriority">High Priority</option>
+          <option value="important">Important</option>
+          <option value="normal">Normal</option>
+        </select>
 
-<label htmlFor="user">User</label>
+        <label htmlFor="user">User</label>
         <input
           type="text"
           name="user"
           id="importance"
-          value={importance}
-          onChange={handleImportance}
+          value={user}
+          onChange={handleUser}
         />
 
         <button type="submit">Create project</button>
