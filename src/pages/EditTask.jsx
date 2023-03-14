@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 function EditTask() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
+
   const [importance, setImportance] = useState("");
 
   const handleTitle = (e) => setTitle(e.target.value);
@@ -16,17 +18,23 @@ function EditTask() {
   const navigate = useNavigate();
 
   const { id } = useParams();
-
+  const storedToken = localStorage.getItem("authToken");
   const getTask = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/tasks/${id}`
+        `${import.meta.env.VITE_API_URL}/tasks/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        }
       );
 
       setTitle(response.data.title);
       setDescription(response.data.description);
       setStatus(response.data.status);
       setImportance(response.data.importance);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +43,10 @@ function EditTask() {
   const deleteTask = async () => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/tasks/${id}`
+        `${import.meta.env.VITE_API_URL}/tasks/${id}`, {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          }}
       );
       console.log(response);
 
@@ -53,8 +64,12 @@ function EditTask() {
     e.preventDefault();
     const body = { title, description, status, importance };
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`, body);
-      navigate(`/tasks/${id}`);
+      await axios.put(`${import.meta.env.VITE_API_URL}/tasks/${id}`, body, {
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      });
+      navigate(`/tasks`);
     } catch (error) {
       console.log(error);
     }

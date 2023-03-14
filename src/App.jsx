@@ -11,6 +11,8 @@ import Login from "../src/pages/Login";
 import Signup from "../src/pages/Signup";
 import Tasks from "../src/pages/Tasks";
 import ReactCalendar from "./components/ReactCalendar";
+import PomodoroTimer from "./components/PomodoroTimer"; 
+
 /* import { GoogleLogin } from "@react-oauth/google"; */
 
 function App() {

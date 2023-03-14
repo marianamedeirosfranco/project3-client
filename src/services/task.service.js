@@ -6,9 +6,9 @@ class TaskService {
       baseURL: import.meta.env.VITE_API_URL || "http://localhost:5005",
     });
 
-    //here we intercept every request that uses this api and call a middleware function
+    
     this.api.interceptors.request.use((config) => {
-      //inside this middleware function the first thing we do is get the token from the localstorage
+      
       const storedToken = localStorage.getItem("authToken");
 
       //if there is a token we're going to add it to the headers of the request
@@ -33,21 +33,21 @@ class TaskService {
   //Create a task
   //body refers to the object with title and description
   createTask = (body) => {
-    return this.api.post("/api/tasks", body);
+    return this.api.post("/tasks", body);
   };
 
   getSingleTask = (id) => {
-    return this.api.get(`tasks/${id}`);
+    return this.api.get(`/tasks/${id}`);
   };
 
   //getbyId / details
 
   getSingleTask = (id) => {
-    return this.api.get(`api/tasks/${id}`);
+    return this.api.get(`/tasks/${id}`);
   };
   //update
   updateTask = (id) => {
-    return this.api.get(`api/tasks/${id}`);
+    return this.api.get(`/tasks/${id}`);
   };
 
   //delete

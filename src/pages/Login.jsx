@@ -15,6 +15,8 @@ function Login() {
 
   const { authenticateUser } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,13 +34,11 @@ function Login() {
       authenticateUser();
 
       console.log(response.data.authToken);
-      navigate("/tasks");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-
-  const navigate = useNavigate();
 
   return (
     <>
