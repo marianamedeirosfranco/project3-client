@@ -2,7 +2,8 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-
+import LoginGoogle from "./LoginGoogle";
+import '../pages/login.css'
 
 
 function Login() {
@@ -41,13 +42,16 @@ function Login() {
 
   return (
     <>
-      <div id="signInDiv">
+      <div id='main'>
         <section>
-          <h1>Login</h1>
+        <div id="signInDiv">
+
+        
+          <h2>Login</h2>
 
           <form onSubmit={handleSubmit}>
-            <label htmlFor="email"> Email</label>
-            <input
+            <label htmlFor="email" > Email</label>
+            <input placeholder="EMAIL"
               type="email"
               name="email"
               id="email"
@@ -56,7 +60,7 @@ function Login() {
             />
 
             <label htmlFor="password"> Password</label>
-            <input
+            <input placeholder="PASSWORD"
               type="password"
               name="password"
               id="password"
@@ -64,11 +68,24 @@ function Login() {
               onChange={handlePassword}
             />
 
-            <button type="submit">Login</button>
+            <button className='login-btn' type="submit">Login</button>
+            <p className="text">Or login using</p>
+
+            
+
+            <div className='alt-login'>
+              <div className='facebook'></div>
+              <div className='google'>
+
+              {/* <LoginGoogle/> */}
+              
+              </div>
+            </div>
           </form>
 
           <p>Don't have an account?</p>
-          <Link to="/signup">Signup</Link>
+          <Link className='signup-btn' to="/signup">Signup HERE</Link>
+          </div>
         </section>
       </div>
     </>

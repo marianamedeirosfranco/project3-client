@@ -22,6 +22,7 @@ function AddTask() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const body = { title, description, status, importance, date, comments };
+    console.log(body)
     try {
       await taskService.createTask({
         title,

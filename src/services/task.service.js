@@ -30,7 +30,7 @@ class TaskService {
     //axios.get(`${import.meta.env.VITE_API_URL}/api/projects`)
   };
 
-  //Create a project
+  //Create a task
   //body refers to the object with title and description
   createTask = (body) => {
     return this.api.post("/api/tasks", body);
