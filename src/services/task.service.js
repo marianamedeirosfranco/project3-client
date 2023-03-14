@@ -25,7 +25,7 @@ class TaskService {
 
   //Get All Tasks
   getAllTasks = () => {
-    return this.api.get("/api/tasks");
+    return this.api.get("/tasks");
     //the line above is equivalent to:
     //axios.get(`${import.meta.env.VITE_API_URL}/api/projects`)
   };
@@ -35,8 +35,9 @@ class TaskService {
   createTask = (body) => {
     return this.api.post("/api/tasks", body);
   };
+
   getSingleTask = (id) => {
-    return this.api.get(`/api/tasks/${id}`);
+    return this.api.get(`tasks/${id}`);
   };
 
   //getbyId / details
